@@ -2,7 +2,7 @@ package app.brio.DTO;
 
 import java.time.LocalDateTime;
 
-public class UserResponseDto {
+public class UserResponseDTO {
     private Long id;
     private String login;
     private String mail;
@@ -10,7 +10,16 @@ public class UserResponseDto {
     private String lastname;
     private LocalDateTime dateCreation;
 
-    public UserResponseDto(){}
+    public UserResponseDTO(){}
+
+    public UserResponseDTO(Long id, String login, String mail, String firstName, String lastname, LocalDateTime dateCreation) {
+        this.id = id;
+        this.login = login;
+        this.mail = mail;
+        this.firstName = firstName;
+        this.lastname = lastname;
+        this.dateCreation = dateCreation;
+    }
 
     public Long getId() {
         return id;

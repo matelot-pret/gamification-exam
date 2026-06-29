@@ -11,6 +11,14 @@ public class UserCreationDTO {
 
     public UserCreationDTO(){}
 
+    public UserCreationDTO(String login, String mail, String password, String firstName, String lastName) {
+        this.login = login;
+        this.mail = mail;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getLogin() {
         return login;
     }

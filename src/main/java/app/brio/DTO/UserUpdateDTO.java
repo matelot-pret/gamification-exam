@@ -7,6 +7,12 @@ public class UserUpdateDTO {
 
     public UserUpdateDTO(){}
 
+    public UserUpdateDTO(String mail, String firstName, String lastName) {
+        this.mail = mail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getMail() {
         return mail;
     }
