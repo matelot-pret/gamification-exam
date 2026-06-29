@@ -25,17 +25,24 @@ public class User {
     private String lastName;
     private LocalDateTime dateCreation;
 
-    public User(){
-        this.dateCreation = LocalDateTime.now();
-    }
+    public User(){}
 
-    public User(Long id, String login, String mail, String hashPassword, String firstName, String lastName) {
-        this.id = id;
+    public User(String login, String mail, String hashPassword, String firstName, String lastName) {
         this.login = login;
         this.mail = mail;
         this.hashPassword = hashPassword;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    /**
+     * JPA lifecycle callback invoked automatically by the persistence provider
+     * immediately before the entity is first inserted into the database.
+     * Sets the creation timestamp once, at insert time only, never on updates
+     * or when an existing entity is loaded.
+     */
+    @PrePersist
+    protected void onCreate(){
         this.dateCreation = LocalDateTime.now();
     }
 
