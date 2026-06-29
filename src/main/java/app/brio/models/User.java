@@ -25,16 +25,18 @@ public class User {
     private String lastName;
     private LocalDateTime dateCreation;
 
-    public User(){}
+    public User(){
+        this.dateCreation = LocalDateTime.now();
+    }
 
-    public User(Long id, String login, String mail, String hashPassword, String firstName, String lastName, LocalDateTime dateCreation) {
+    public User(Long id, String login, String mail, String hashPassword, String firstName, String lastName) {
         this.id = id;
         this.login = login;
         this.mail = mail;
         this.hashPassword = hashPassword;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateCreation = dateCreation;
+        this.dateCreation = LocalDateTime.now();
     }
 
     public Long getId() {
