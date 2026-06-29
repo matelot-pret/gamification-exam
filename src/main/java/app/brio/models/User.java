@@ -1,21 +1,16 @@
 package app.brio.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 @Table(name = "app_user")
 public class User {
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Préciser la strategie pour éviter que Hibernate n'ai a le deviner même s'il le fait selon la version
+    private Long id;//UUID plus lourd que long ou int mais moins predictible et assure l'unicité de l'id
 
     @Column(nullable = false, unique = true)
     private String login;
@@ -26,27 +21,27 @@ public class User {
     @Column(nullable = false)
     private String hashPassword;
 
-    private String firstname;
+    private String firstName;
     private String lastName;
     private LocalDateTime dateCreation;
 
     public User(){}
 
-    public User(UUID id, String login, String mail, String hashPassword, String firstname, String lastName, LocalDateTime dateCreation) {
+    public User(Long id, String login, String mail, String hashPassword, String firstName, String lastName, LocalDateTime dateCreation) {
         this.id = id;
         this.login = login;
         this.mail = mail;
         this.hashPassword = hashPassword;
-        this.firstname = firstname;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.dateCreation = dateCreation;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -74,12 +69,12 @@ public class User {
         this.hashPassword = hashPassword;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
     public String getLastName() {
@@ -116,7 +111,7 @@ public class User {
                 ", login='" + login + '\'' +
                 ", mail='" + mail + '\'' +
                 ", hashPassword='" + hashPassword + '\'' +
-                ", firstname='" + firstname + '\'' +
+                ", firstname='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateCreation=" + dateCreation +
                 '}';
